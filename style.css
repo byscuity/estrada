@@ -7,15 +7,15 @@
 
 body {
   overflow: hidden;
-  background-color: #000; /* Fundo preto total atrás de tudo */
+  background-color: #000; /* Fundo preto total */
 }
 
-/* Container da tela cheia */
+/* Container principal */
 .cena-container {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background-color: #000; /* Garante o tom bem escuro */
+  background-color: #000;
 }
 
 /* Camada da imagem bg.jpg em movimento */
@@ -27,40 +27,39 @@ body {
   height: 100%;
   background-image: url('bg.jpg');
   background-repeat: repeat-x;
-  background-size: auto 100%; /* Ajusta a altura da imagem à tela */
+  background-size: auto 100%;
   background-position: 0 0;
   
-  /* Animação que desloca a imagem da direita para a esquerda */
-  animation: moverEstrada 15s linear infinite;
+  /* Movimento da direita para a esquerda em loop */
+  animation: moverEstrada 12s linear infinite;
 }
 
-/* Animação do fundo infinito */
 @keyframes moverEstrada {
   from {
     background-position: 0 0;
   }
   to {
-    /* Ajuste este valor negativo se a transição da imagem não ficar suave */
-    background-position: -2000px 0; 
+    background-position: -2000px 0;
   }
 }
 
 /* Configuração base dos veículos (fixos na tela) */
 .veiculo {
   position: absolute;
-  z-index: 2; /* Garante que fiquem acima do fundo */
-  height: 90px; /* Ajuste o tamanho visual dos veículos */
+  z-index: 2; /* Fica por cima do fundo bg.jpg */
   width: auto;
 }
 
-/* Carro na faixa de cima */
+/* CARRO: Faixa de cima da estrada (perspectiva mais distante) */
 .car {
-  left: 15%;      /* Posição horizontal fixa */
-  bottom: 110px;  /* Faixa superior da pista */
+  height: 140px;  /* Tamanho aumentado */
+  bottom: 8%;     /* Posiciona exatamente na faixa superior do asfalto */
+  left: 15%;      /* Posicionado mais atrás no fluxo */
 }
 
-/* Moto na faixa de baixo */
+/* MOTO (bike.png): Faixa de baixo da estrada (mais próxima do espectador) */
 .bike {
-  left: 35%;      /* Posição horizontal fixa (descolada do carro) */
-  bottom: 40px;   /* Faixa inferior da pista */
+  height: 130px;  /* Tamanho aumentado */
+  bottom: 1%;     /* Posiciona exatamente na faixa inferior do asfalto */
+  left: 45%;      /* Posicionada à frente do carro */
 }
