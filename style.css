@@ -1,4 +1,4 @@
-/* Reset básico para remover margens e rolagens indesejadas */
+/* Reseta margens e barras de rolagem */
 * {
   margin: 0;
   padding: 0;
@@ -6,66 +6,61 @@
 }
 
 body {
-  overflow-x: hidden; /* Evita barra de rolagem horizontal */
-  font-family: sans-serif;
+  overflow: hidden;
+  background-color: #000; /* Fundo preto total atrás de tudo */
 }
 
-/* Container do Fundo - Ocupa 100% da largura da tela (de esquerda a direita) */
-.cena-container {
-  position: relative;
-  width: 100vw;               /* 100% da largura da viewport */
-  height: 500px;              /* Altura maior para dar destaque */
-  
-  /* Configurações do Fundo (bg.jpg) */
-  background-image: url('bg.jpg');
-  background-repeat: no-repeat; /* Evita que o fundo fique se repetindo */
-  background-size: cover;       /* Cobre todo o espaço do container mantendo a proporção */
-  background-position: center;  /* Centraliza a imagem do fundo */
-}
-
-/* Estilo base para os PNGs (Aumentados) */
-.veiculo {
-  position: absolute;
-  bottom: 30px;               /* Distância em relação à base do fundo */
-  height: auto;               /* Mantém a proporção da imagem */
-  display: block;
-}
-
-/* Configurações específicas para o Carro (car.png) */
-.car {
-  width: 280px;               /* Tamanho maior para o carro */
-  left: 10%;                  /* Posição na tela */
-  z-index: 10;                /* Garante que o carro fique visível e na frente do fundo */
-}
-
-/* Configurações específicas para a Bike (bike.png) */
-.bike {
-  width: 140px;               /* Tamanho maior para a bicicleta */
-  right: 15%;                 /* Posição na tela */
-  z-index: 9;
-}
-
-/* Container do Fundo com Animação */
+/* Container da tela cheia */
 .cena-container {
   position: relative;
   width: 100vw;
-  height: 500px;
-  
-  background-image: url('bg.jpg');
-  background-repeat: repeat-x; /* Repete a imagem no eixo X para dar o efeito contínuo */
-  background-size: cover;      /* Ou ajuste para 'contain' / altura fixa dependendo da proporção da imagem */
-  background-position: 0 0;
-
-  /* Aplica a animação: nome, duração, tipo de transição e loop infinito */
-  animation: moverFundo 10s linear infinite;
+  height: 100vh;
+  background-color: #000; /* Garante o tom bem escuro */
 }
 
-/* Definição do movimento do fundo */
-@keyframes moverFundo {
+/* Camada da imagem bg.jpg em movimento */
+.estrada-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('bg.jpg');
+  background-repeat: repeat-x;
+  background-size: auto 100%; /* Ajusta a altura da imagem à tela */
+  background-position: 0 0;
+  
+  /* Animação que desloca a imagem da direita para a esquerda */
+  animation: moverEstrada 15s linear infinite;
+}
+
+/* Animação do fundo infinito */
+@keyframes moverEstrada {
   from {
     background-position: 0 0;
   }
   to {
-    background-position: -100% 0; /* Ajuste para o valor exato da largura do fundo se preferir px */
+    /* Ajuste este valor negativo se a transição da imagem não ficar suave */
+    background-position: -2000px 0; 
   }
+}
+
+/* Configuração base dos veículos (fixos na tela) */
+.veiculo {
+  position: absolute;
+  z-index: 2; /* Garante que fiquem acima do fundo */
+  height: 90px; /* Ajuste o tamanho visual dos veículos */
+  width: auto;
+}
+
+/* Carro na faixa de cima */
+.car {
+  left: 15%;      /* Posição horizontal fixa */
+  bottom: 110px;  /* Faixa superior da pista */
+}
+
+/* Moto na faixa de baixo */
+.bike {
+  left: 35%;      /* Posição horizontal fixa (descolada do carro) */
+  bottom: 40px;   /* Faixa inferior da pista */
 }
