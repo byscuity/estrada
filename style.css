@@ -44,3 +44,28 @@ body {
   right: 15%;                 /* Posição na tela */
   z-index: 9;
 }
+
+/* Container do Fundo com Animação */
+.cena-container {
+  position: relative;
+  width: 100vw;
+  height: 500px;
+  
+  background-image: url('bg.jpg');
+  background-repeat: repeat-x; /* Repete a imagem no eixo X para dar o efeito contínuo */
+  background-size: cover;      /* Ou ajuste para 'contain' / altura fixa dependendo da proporção da imagem */
+  background-position: 0 0;
+
+  /* Aplica a animação: nome, duração, tipo de transição e loop infinito */
+  animation: moverFundo 10s linear infinite;
+}
+
+/* Definição do movimento do fundo */
+@keyframes moverFundo {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -100% 0; /* Ajuste para o valor exato da largura do fundo se preferir px */
+  }
+}
