@@ -1,0 +1,65 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #0f172a;
+}
+
+/* Container principal do cenário */
+.cenario {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  
+  /* Imagem de fundo repetida em x */
+  background-image: url('bg.jpg');
+  background-repeat: repeat-x;
+  background-size: auto 100%;
+  background-position: 0 0;
+  
+  /* Animação que move o fundo continuamente da direita para a esquerda */
+  animation: moverFundo 10s linear infinite;
+}
+
+/* Regra da animação do fundo */
+@keyframes moverFundo {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -1920px 0; /* Ajuste o valor negativo se a largura da imagem for diferente */
+  }
+}
+
+/* Estilo geral dos veículos */
+.veiculo {
+  position: absolute;
+  height: auto;
+}
+
+/* Moto (atrás e na faixa de baixo) */
+.moto {
+  width: 110px;
+  left: 15%;      /* Posicionada mais para trás */
+  bottom: 12px;   /* Faixa de baixo */
+  z-index: 2;
+}
+
+/* Carro (à frente e na faixa de cima) */
+.carro {
+  width: 140px;
+  left: 45%;      /* Posicionado mais à frente */
+  bottom: 38px;   /* Faixa de cima */
+  z-index: 1;
+}
