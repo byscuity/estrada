@@ -1,3 +1,4 @@
+/* Reset básico para remover margens e rolagens indesejadas */
 * {
   margin: 0;
   padding: 0;
@@ -5,61 +6,41 @@
 }
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #0f172a;
+  overflow-x: hidden; /* Evita barra de rolagem horizontal */
+  font-family: sans-serif;
 }
 
-/* Container principal do cenário */
-.cenario {
+/* Container do Fundo - Ocupa 100% da largura da tela (de esquerda a direita) */
+.cena-container {
   position: relative;
-  width: 100%;
-  max-width: 1000px;
-  height: 300px;
-  overflow: hidden;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  width: 100vw;               /* 100% da largura da viewport */
+  height: 500px;              /* Altura maior para dar destaque */
   
-  /* Imagem de fundo repetida em x */
+  /* Configurações do Fundo (bg.jpg) */
   background-image: url('bg.jpg');
-  background-repeat: repeat-x;
-  background-size: auto 100%;
-  background-position: 0 0;
-  
-  /* Animação que move o fundo continuamente da direita para a esquerda */
-  animation: moverFundo 10s linear infinite;
+  background-repeat: no-repeat; /* Evita que o fundo fique se repetindo */
+  background-size: cover;       /* Cobre todo o espaço do container mantendo a proporção */
+  background-position: center;  /* Centraliza a imagem do fundo */
 }
 
-/* Regra da animação do fundo */
-@keyframes moverFundo {
-  from {
-    background-position: 0 0;
-  }
-  to {
-    background-position: -1920px 0; /* Ajuste o valor negativo se a largura da imagem for diferente */
-  }
-}
-
-/* Estilo geral dos veículos */
+/* Estilo base para os PNGs (Aumentados) */
 .veiculo {
   position: absolute;
-  height: auto;
+  bottom: 30px;               /* Distância em relação à base do fundo */
+  height: auto;               /* Mantém a proporção da imagem */
+  display: block;
 }
 
-/* Moto (atrás e na faixa de baixo) */
-.moto {
-  width: 110px;
-  left: 15%;      /* Posicionada mais para trás */
-  bottom: 12px;   /* Faixa de baixo */
-  z-index: 2;
+/* Configurações específicas para o Carro (car.png) */
+.car {
+  width: 280px;               /* Tamanho maior para o carro */
+  left: 10%;                  /* Posição na tela */
+  z-index: 10;                /* Garante que o carro fique visível e na frente do fundo */
 }
 
-/* Carro (à frente e na faixa de cima) */
-.carro {
-  width: 140px;
-  left: 45%;      /* Posicionado mais à frente */
-  bottom: 38px;   /* Faixa de cima */
-  z-index: 1;
+/* Configurações específicas para a Bike (bike.png) */
+.bike {
+  width: 140px;               /* Tamanho maior para a bicicleta */
+  right: 15%;                 /* Posição na tela */
+  z-index: 9;
 }
